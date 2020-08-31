@@ -2,9 +2,6 @@ package com.example.lesson22.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -22,6 +19,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private val values = arrayListOf<String>()
+    private var adapter: CurrencySpinnerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +78,12 @@ class MainActivity : AppCompatActivity() {
             for (item in keys) {
                 values.add(data?.rates.get(item).toString())
             }
+            setupAdapter(keys)
         }
-        val adapter = CurrencySpinnerAdapter(applicationContext, R.layout.item_spinner, keys!!)
+    }
+
+    private fun setupAdapter(keys: List<String>) {
+        adapter = CurrencySpinnerAdapter(applicationContext, R.layout.item_spinner, keys)
         spValueOne.adapter = adapter
         spValueTwo.adapter = adapter
         spValueOne.onItemSelectedListener = object : OnItemSelectedListener {
