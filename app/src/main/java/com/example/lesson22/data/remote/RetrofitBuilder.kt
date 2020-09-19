@@ -8,14 +8,15 @@ object RetrofitBuilder {
 
     private var service: CurrencyService? = null
 
-    fun getService():CurrencyService?{
+    fun getService(): CurrencyService?{
         if (service == null)
-            service = buildRetrofit()
+            service =
+                buildRetrofit()
 
         return service
     }
 
-    private fun buildRetrofit():CurrencyService {
+    private fun buildRetrofit(): CurrencyService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

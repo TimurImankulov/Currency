@@ -1,4 +1,4 @@
-package com.example.lesson22.data.remote.model
+package com.example.lesson22.data.model
 
 import com.google.gson.JsonObject
 
